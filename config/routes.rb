@@ -1,7 +1,12 @@
 Devise::Application.routes.draw do
   devise_for :users
-
-
+  
+  devise_scope :user do
+    get 'register', to: 'devise/registrations#new', as: :register #####################
+    get 'login', to: 'devise/sessions#new', as: :login
+    get 'logout', to: 'devise/sessions#destroy', as: :logout
+    get 'profile', to: 'devise/registrations#edit', as: :profile
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -51,11 +56,11 @@ Devise::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'dashboard#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  #match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end

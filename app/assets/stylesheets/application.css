@@ -10,4 +10,15 @@
  *
  *= require_self
  *= require_tree .
- */
+*/
+body{
+	padding:40px;
+	background-color: #d9d8d8;
+}
+.alert{
+	margin-top:10px;
+}
+.navbar .brand{
+	font-size: 30px;
+	
+}
