@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     @all_users = User.all
     @statuses = Status.all
     @categories = Category.all
+    @assignment = User.assignments.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -37,14 +38,19 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    @all_users = User.all
+    @statuses = Status.all
+    @categories = Category.all
   end
 
   # POST /posts
   # POST /posts.json
   def create
     params[:post][:user_id] = current_user.id
+    params[:post][:status_id] = 1
     @post = Post.new(params[:post])
-
+    
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

@@ -1,4 +1,4 @@
 class Status < ActiveRecord::Base
-   belongs_to :post
+   has_many :posts
    attr_accessible :title
 end

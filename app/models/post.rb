@@ -1,8 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_many :categories
-  has_many :users, :through => :assignments
+  belongs_to :category
   has_many :assignments
+  has_many :users, :through => :assignments
+  belongs_to :status
   
-  attr_accessible :category_id, :description, :namekey, :status_id, :title, :user_id
+  attr_accessible :category_id, :description, :namekey, :status_id, :title, :user_id, :id
 end
