@@ -24,18 +24,28 @@
     <%= f.text_area :description %>
   </div>
   	
-  <% @categories.each do |cat|%>	
+  <% @cat=Array.new 
+  	@categories.each do |cat|
+  	@cat<<[cat.title,cat.id]
+  	 end 
+  	 %>	
   	 
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.select :category_id, ['ad','adf']%>
+    <%= f.select :category_id, @cat %>
   </div>
   
-  <% end %>
+  <%= fields_for(@assingment) do |ass|%>
   <div class="field">
-    <%= f.label :status_id %><br />
-    <%= f.number_field :status_id %>
+  	<%= ass.label "Assigned Users"%>
+  	<%= collection_select (:users, :id, @all_users, :id, :fname, {}, {:multiple=> true})%>
+
   </div>
+  
+  
+  <% end %>
+  
+ 
   <div class="actions">
     <%= f.submit %>
   </div>
