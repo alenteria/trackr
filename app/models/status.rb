@@ -1,3 +1,4 @@
 class Status < ActiveRecord::Base
-  attr_accessible :title
+   belongs_to :post
+   attr_accessible :title
 end
