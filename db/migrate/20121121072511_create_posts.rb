@@ -1,6 +1,6 @@
-class CreateTickets < ActiveRecord::Migration
+class CreatePosts < ActiveRecord::Migration
   def change
-    create_table :tickets do |t|
+    create_table :posts do |t|
       t.string :namekey
       t.string :title
       t.text :description
