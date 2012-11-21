@@ -1,13 +1,4 @@
 Devise::Application.routes.draw do
-  resources :statuses
-
-
-  resources :tickets
-
-
-  resources :categories
-
-
   get "home/index"
 
   devise_for :users
