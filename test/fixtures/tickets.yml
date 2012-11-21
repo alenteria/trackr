@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  namekey: MyString
+  title: MyString
+  description: MyText
+  user_id: 1
+  category_id: 1
+  status_id: 1
+
+two:
+  namekey: MyString
+  title: MyString
+  description: MyText
+  user_id: 1
+  category_id: 1
+  status_id: 1
