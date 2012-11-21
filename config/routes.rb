@@ -1,4 +1,10 @@
 Devise::Application.routes.draw do
+  resources :statuses
+
+
+  resources :categories
+
+
   resources :posts
 
 
