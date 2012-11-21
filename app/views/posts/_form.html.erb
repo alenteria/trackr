@@ -24,7 +24,7 @@
     <%= f.text_area :description %>
   </div>
   	
-  <% @cat=Array.new 
+  	<% @cat=Array.new 
   	@categories.each do |cat|
   	@cat<<[cat.title,cat.id]
   	 end 
@@ -35,16 +35,7 @@
     <%= f.select :category_id, @cat %>
   </div>
   
-  <%= fields_for(@assingment) do |ass|%>
-  <div class="field">
-  	<%= ass.label "Assigned Users"%>
-  	<%= collection_select (:users, :id, @all_users, :id, :fname, {}, {:multiple=> true})%>
-
-  </div>
-  
-  
-  <% end %>
-  
+   
  
   <div class="actions">
     <%= f.submit %>

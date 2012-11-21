@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @all_users = User.all
     @statuses = Status.all
     @categories = Category.all
-    @assignment = User.assignments.build
+    @assignment = Assignment.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

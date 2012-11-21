@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
-  has_many :assignments
+  belongs_to :assignment
   has_many :posts, :through => :assignments
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

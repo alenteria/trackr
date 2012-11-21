@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
-  has_many :assignments
+  has_many :assignments, :through=>:user
   has_many :users, :through => :assignments
   belongs_to :status
   
