@@ -1,35 +1,42 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <b>Namekey:</b>
-  <%= @post.namekey %>
+  <h3>Title:</3>
+  <%=h @post.title %>
 </p>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
+<p class="lead">
+ Description: "<%=h @post.description %>" <br />
+Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name %></b> <br />
 </p>
 
-<p>
-  <b>Description:</b>
-  <%= @post.description %>
-</p>
+<h4>Comments: </h4>
 
-<p>
-  <b>User:</b>
-  <%= @post.user.fname %>&nbsp;<%= @post.user.lname%>
-</p>
+<% @post.comments.each do |c| %>
+<div class="status1">
+	  <div class="status-inner-comment">
+	    <b><%= #h c.name 
+	    	%> said:</b><br />
+	   	<%= time_ago_in_words(c.created_at) %> ago 
+	  
+		  <p>
+		    <%=h c.message %>
+		  </p>
+	
+	  </div>
+</div>	
+  
+<% end %>
 
-<p>
-  <b>Category:</b>
-  <%= @post.category.title %>
-</p>
+<%= form_for [@post, Comment.new] do |f| %>
+<div class="status">
 
-<p>
-  <b>Status:</b>
-  <%= @post.status.title %>
-</p>
+    <%= f.text_area :message, :rows=> "3" %><br />
 
+     <%= f.submit "Add Comment" %>
+ </div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  
+  
+
+<% end %>

@@ -15,4 +15,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :fname, :lname, :email, :password, :password_confirmation, :remember_me, :pic
   # attr_accessible :title, :body
+  
+  
+ def full_name
+    fname + " " + lname 
+ end
+  
 end
