@@ -15,14 +15,26 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 <% @post.comments.each do |c| %>
 <div class="status1">
 	  <div class="status-inner-comment">
-	    <b><%= #h c.name 
-	    	%> said:</b><br />
-	   	<%= time_ago_in_words(c.created_at) %> ago 
-	  
+	    <b>
+	    	<%	name = ''
+	    		pic_path = '' 
+	    		@user_list.each do |u|
+	    			if c.user_id == u.id
+	    				name=u.full_name
+	    				pic_path = u.pic_file_name
+	    			end
+	    		end
+	    	
+	    	 %>
+	    	 
+	    	 <%= image_tag("/system/pics/#{c.user_id}/thumb/#{pic_path}", :alt => name) %>
+	    	 <%= name%> said:</b><br />
+	   	
 		  <p>
 		    <%=h c.message %>
 		  </p>
-	
+		  <%= time_ago_in_words(c.created_at) %> ago 
+	  
 	  </div>
 </div>	
   
@@ -30,7 +42,7 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 
 <%= form_for [@post, Comment.new] do |f| %>
 <div class="status">
-
+	<%= f.hidden_field :user_id, :value=>current_user.id%>
     <%= f.text_area :message, :rows=> "3" %><br />
 
      <%= f.submit "Add Comment" %>
