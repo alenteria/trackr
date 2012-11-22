@@ -47,6 +47,8 @@ class PostsController < ApplicationController
     @all_users = User.all
     @statuses = Status.all
     @categories = Category.all
+    
+    @assignments = @post.assignments.build
   end
 
   # POST /posts
@@ -85,23 +87,32 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     
-    assigned_usrs=params[:post][:user_id]
     params[:post][:user_id] = current_user.id
     
-    @assignment= Assignment.find_by_post_id(params[:id])
     @post = Post.find(params[:id])
     
     respond_to do |format|
       if @post.update_attributes(params[:post])
-         post_id= @post.id
          
-         if assigned_usrs.size<=1
+         
+         users_size = 0
+         params[:users][:id].each do |u|
+           if !u.empty?
+             users_size = users_size + 1
+           end
+         end
+         
+         
+         
+         if users_size < 1
             #do nothing
           elsif
             Assignment.delete_all(:post_id => params[:id])
-            for n in 1...assigned_usrs.size do
-             assigned = Assignment.new(:post_id => post_id, :user_id => assigned_usrs[n])
-             assigned.save
+            params[:users][:id].each do |user|
+              if !user.empty?
+                ass = Assignment.new(:post_id => params[:id], :user_id => user)
+                ass.save
+              end
             end
           end
         
@@ -123,6 +134,7 @@ class PostsController < ApplicationController
   # @assignments= Assignment.find_by_post_id(params[:id])
     
     Assignment.delete_all(:post_id => params[:id])
+    Comment.delete_all(:post_id => params[:id])
     
     @post.destroy
    # @assignments.destroy

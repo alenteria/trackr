@@ -37,17 +37,13 @@
     <%= f.select :category_id, @cat %>
   </div>
   
-    <div class="field">
-  	<%= f.label "Assigned Users"%>
+  <div class="field">
   	
-  	<% @usr=Array.new 
-	  	@all_users.each do |usr|
-	  	@usr<<[usr.fname,usr.id]
-  	 end 
-  	 %>
-  	 
-  	<%= f.select(:user_id, @usr, 
-	{ :selected => @usr },{ :multiple => true}) %>
+   	
+   	<%= fields_for(@assignments) do |ass|%>
+		<%= ass.label "Assigned Users"%>
+		<%= collection_select( :users, :id, @all_users, :id, :full_name, {}, {:multiple => :true})%>
+	<% end %>
 
   </div>
   
