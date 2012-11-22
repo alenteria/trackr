@@ -6,7 +6,7 @@
 </p>
 
 <p class="lead">
- Description: "<%=h @post.description %>" <br />
+ Description: "<%=h @post.description %>" <br /><br />
 Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name %></b> <br />
 </p>
 
@@ -14,9 +14,8 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 
 <% @post.comments.each do |c| %>
 <div class="status1">
-	  <div class="status-inner-comment">
-	    <b>
-	    	<%	name = ''
+	
+	    <%	name = ''
 	    		pic_path = '' 
 	    		@user_list.each do |u|
 	    			if c.user_id == u.id
@@ -28,14 +27,16 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 	    	 %>
 	    	 
 	    	 <%= image_tag("/system/pics/#{c.user_id}/thumb/#{pic_path}", :alt => name) %>
-	    	 <%= name%> said:</b><br />
-	   	
-		  <p>
-		    <%=h c.message %>
-		  </p>
-		  <%= time_ago_in_words(c.created_at) %> ago 
-	  
-	  </div>
+	    	<%= time_ago_in_words(c.created_at) %> ago
+		  	 <b><%= name%> said: </b><%=h c.message %>
+			
+	  	
+			
+		
+		
+		  
+		 
+	 
 </div>	
   
 <% end %>

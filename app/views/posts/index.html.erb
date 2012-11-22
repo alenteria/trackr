@@ -22,10 +22,10 @@
 		        	
 		        	
 		          <h2><%= post.title %></h2>
-		          
-		          <%= link_to "Details»", post_path(post), class:"btn btn-info" %>
+		          <%= time_ago_in_words(post.created_at) + " ago" %> 
+		          <%= link_to "Open for Details »", post_path(post), class:"btn btn-info" %><br />
 		        	
-		        	<%= link_to time_ago_in_words(post.created_at) + " ago", post %> 
+		        	
 		        	
 		           <p><% post.namekey %></p>
 		          <p> Status: <%= post.status.title %></p>
