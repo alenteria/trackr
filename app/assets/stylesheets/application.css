@@ -77,5 +77,18 @@ body {
         margin-bottom: 15px;
         padding: 7px 9px;
       }
+.span4-a {
+  width: 250px;
+  height: 230px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 10px solid #a7a7a7;
+  overflow: auto;
+  background-color: #88c8fe;
 
+}
+.btn btn-primary btn-large{
+	color: #ffff;
+	
+}
 

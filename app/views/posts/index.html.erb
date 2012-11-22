@@ -1,69 +1,60 @@
 
-
-
-<% if user_signed_in? %>
-<div class="page-header">
-	<h1>All Tickets</h1>
-</div>
-	<%= link_to "Create ticket", new_post_path, class:"btn btn-success" %>
-<% else %>
-<div class="page-header">
-	<h1>Register now to create a ticket!</h1>
-</div>
-<% end %>
-
-
-<% @posts.each do |post| %>
-
-	<div class="status">
-		
-			
-			<% post.category_id %>
-			<% post.user_id %>
-			<% post.namekey %>
-			
-			
-		<div class="status-inner">
-		   	
-		   <div class="status-inner1">
-			   	<b class="title"><%= post.title %></b> <br />
-			   	<%= post.namekey %><br />
-			  	Status: <%= post.status.title %> <br />
-			   
-			    <%= image_tag post.user.pic.url(:thumb) %><b> <%= post.user.full_name %></b> <br />
-		   		
-		   		<div class="meta">
-					
-					<%= link_to time_ago_in_words(post.created_at) + " ago", post %> 
-					
-							
-							<span class="admin">
-									| <%= link_to "Show", post_path(post) %> |
-									<%= link_to "Edit", edit_post_path(post) %> |
-									<%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete this status?"}%>
-							</span>	
-						
+ <div class="container">
+ 	
+	<div class="hero-unit">
+	        <h1>Dashboard</h1>
+	        <p>Some text here.</p>
+	        <% if user_signed_in? %>
+					<%= link_to "Create ticket", new_post_path, class:"btn btn-primary btn-large" %>
+				<% else %>
+				<div class="page-header">
+					<h1>Register now to create a ticket!</h1>
 				</div>
-		   
-		   
-		    </div>
-		    
-			<div class="status-inner2">
-				
-				 <b>Description:</b>
-				  <%= post.description %><br />
-				 
-			</div>
+			<% end %>
 			
-			
-			
+	</div> 
+
+
+
+		<div class="row">
+			<% @posts.each do |post| %>
+		        <div class="span4-a">
+		        	
+		        	
+		          <h2><%= post.title %></h2>
+		          
+		          <%= link_to "Details»", post_path(post), class:"btn btn-info" %>
+		        	
+		        	<%= link_to time_ago_in_words(post.created_at) + " ago", post %> 
+		        	
+		           <p><% post.namekey %></p>
+		          <p> Status: <%= post.status.title %></p>
+		           <p> Category: <%= post.category.title %></p>
+		           <%= image_tag post.user.pic.url(:thumb) %><b> <%= post.user.full_name %></b> <br />
+		          <p><%= post.description %><br /></p>
+		         
+			       <div class="meta">
+								
+										<span class="admin">
+												| <%= link_to "Show", post_path(post) %> |
+												<%= link_to "Edit", edit_post_path(post) %> |
+												<%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete this status?"}%> |
+										</span>		
+					</div>
+	       
+       			 </div>
+       		<% end %>	 
 		</div>
-	</div>
-<% end %>
+	
+		   		
+		   		
+	
+	
+
 
 
 
 
 <br />
 
-
+</div>
