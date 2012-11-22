@@ -33,7 +33,7 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 	
 	    <%	name = ''
 	    		pic_path = '' 
-	    		@user_list.each do |u|
+	    		@user_record.each do |u|
 	    			if c.user_id == u.id
 	    				name=u.full_name
 	    				pic_path = u.pic_file_name
