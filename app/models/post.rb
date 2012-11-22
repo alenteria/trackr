@@ -5,5 +5,5 @@ class Post < ActiveRecord::Base
   has_many :users, :through => :assignments
   belongs_to :status
   
-  attr_accessible :category_id, :description, :namekey, :status_id, :title, :user_id, :id
+  attr_accessible :category_id, :description, :namekey, :status_id, :title, :user_id, :id, :pic
 end

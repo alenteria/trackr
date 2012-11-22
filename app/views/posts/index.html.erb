@@ -1,33 +1,69 @@
-<h1>Listing posts</h1>
 
-<table>
-  <tr>
-    <th>Namekey</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>User</th>
-    <th>Category</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
+
+<% if user_signed_in? %>
+<div class="page-header">
+	<h1>All Tickets</h1>
+</div>
+	<%= link_to "Create ticket", new_post_path, class:"btn btn-success" %>
+<% else %>
+<div class="page-header">
+	<h1>Register now to create a ticket!</h1>
+</div>
+<% end %>
+
 
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.namekey %></td>
-    <td><%= post.title %></td>
-    <td><%= post.description %></td>
-    <td><%= post.user.fname %>&nbsp;<%= post.user.lname%></td>
-    <td><%= post.category.title %></td>
-    <td><%= post.status.title %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+
+	<div class="status">
+		
+			
+			<% post.category_id %>
+			<% post.user_id %>
+			<% post.namekey %>
+			
+			
+		<div class="status-inner">
+		   	
+		   <div class="status-inner1">
+			   	<b class="title"><%= post.title %></b> <br />
+			   	<%= post.namekey %><br />
+			  	Status: <%= post.status.title %> <br />
+			   
+			    <%= image_tag post.user.pic.url(:thumb) %><b> <%= post.user.full_name %></b> <br />
+		   		
+		   		<div class="meta">
+					
+					<%= link_to time_ago_in_words(post.created_at) + " ago", post %> 
+					
+							
+							<span class="admin">
+									| <%= link_to "Show", post_path(post) %> |
+									<%= link_to "Edit", edit_post_path(post) %> |
+									<%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete this status?"}%>
+							</span>	
+						
+				</div>
+		   
+		   
+		    </div>
+		    
+			<div class="status-inner2">
+				
+				 <b>Description:</b>
+				  <%= post.description %><br />
+				 
+			</div>
+			
+			
+			
+		</div>
+	</div>
 <% end %>
-</table>
+
+
+
 
 <br />
 
-<%= link_to 'New Post', new_post_path %>
+

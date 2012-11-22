@@ -83,6 +83,7 @@ img {
 button,
 input,
 select,
+
 textarea {
   margin: 0;
   font-size: 100%;
@@ -953,6 +954,7 @@ label,
 input,
 button,
 select,
+
 textarea {
   font-size: 14px;
   font-weight: normal;
@@ -1006,6 +1008,13 @@ textarea,
 .uneditable-input {
   width: 206px;
 }
+
+
+textarea,
+.uneditable-input {
+  width: 880px;
+}
+
 
 textarea {
   height: auto;

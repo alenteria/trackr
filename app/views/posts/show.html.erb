@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @post.user_id %>
+  <b>Author:</b>
+  <%= @post.user.full_name%>
 </p>
 
 <p>
@@ -27,7 +27,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @post.status_id %>
+  <%= @post.status.title %>
 </p>
 
 
