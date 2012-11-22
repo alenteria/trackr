@@ -5,25 +5,7 @@
   <%=h @post.title %>
 </p>
 <p class="lead">
-<b>Assigned Users:</b>
-				 <%	user_array = Array.new %>
-				 	<% @assignment_record.each do |ar| %>
-				 		<% if ar.post_id == @post.id%>
-				 			<% user_array<<ar.user_id %>
-				 		<% end %>	
-				 	<% end %>
- 				 	
-				 	<% @user_record.each do |ur| %>
-	    				<% user_array.each do |ua| %>
-	    					<% if ur.id == ua %>
-	    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %><%=  ur.full_name%>&nbsp;
-	    				<%	end %>
-	    				<% end %>
-	    			<% end %>
-</p>	    			
-<p class="lead">
- Description: "<%=h @post.description %>" <br /><br />
-Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name %></b> <br />
+ "<i><%=h @post.description %></i>" <br /><br />	    			
 </p>
 
 <h4>Comments: </h4>
@@ -41,18 +23,16 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 	    		end
 	    	
 	    	 %>
-	    	 
+	    	 <div class="user-cont">
 	    	 <%= image_tag("/system/pics/#{c.user_id}/thumb/#{pic_path}", :alt => name) %>
-	    	<%= time_ago_in_words(c.created_at) %> ago
-		  	 <b><%= name%> said: </b><%=h c.message %>
-			
-	  	
-			
-		
-		
-		  
-		 
-	 
+	    	
+	    	 <% time_ago_in_words(c.created_at) %> 
+			  <b><%= name%>:</b>
+			 </div>
+	    	 <div class="message-cont">
+		    	<%=h c.message %>
+			</div>
+	
 </div>	
   
 <% end %>
@@ -64,8 +44,27 @@ Author:  <%= image_tag @post.user.pic.url(:thumb) %><b> <%= @post.user.full_name
 
      <%= f.submit "Add Comment" %>
  </div>
-
-  
-  
-
 <% end %>
+
+<br />
+<p class="lead">
+
+Author:  <%= image_tag @post.user.pic.url(:thumb) %> <%= @post.user.full_name %> <br />
+</p>
+<p class="lead">
+Members:
+				 <%	user_array = Array.new %>
+				 	<% @assignment_record.each do |ar| %>
+				 		<% if ar.post_id == @post.id%>
+				 			<% user_array<<ar.user_id %>
+				 		<% end %>	
+				 	<% end %>
+ 				 	
+				 	<% @user_record.each do |ur| %>
+	    				<% user_array.each do |ua| %>
+	    					<% if ur.id == ua %>
+	    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %><%=  ur.full_name%>&nbsp;
+	    				<%	end %>
+	    				<% end %>
+	    			<% end %>
+</p>

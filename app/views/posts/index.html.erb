@@ -18,19 +18,33 @@
 
 		<div class="row">
 			<% @posts.each do |post| %>
-		        <div class="span4-a">
+		       
+		       <% if post.category.title == "FEATURES" %>
+		        	<div class="span4-a">
+		       <% else %>
+		       	 	<div class="span4-b">	
+		       <% end %>	
 		        	
 		        	
-		          <h2><%= post.title %></h2>
-		          <%= time_ago_in_words(post.created_at) + " ago" %> 
-		          <%= link_to "Open for Details »", post_path(post), class:"btn btn-info" %><br />
-		        	
+		         <p class="lead"><%= post.title %></p>
+		          <%= time_ago_in_words(post.created_at) + " ago" %>
+		      
+		        <% if post.category.title == "FEATURES" %>
+		        	<%= link_to "Open for Details »", post_path(post), class:"btn btn-info" %><br />
+		       <% else %>
+		       	 	<%= link_to "Open for Details »", post_path(post), class:"btn btn-warning" %><br />
+		        <% end %>
 		        	
 		        	
 		           <p><% post.namekey %></p>
 		          <p> Status: <%= post.status.title %></p>
 		           <p> Category: <%= post.category.title %></p>
-		           <p>Members:<br/>
+		           
+		           <%= image_tag post.user.pic.url(:thumb) %><b> By: <%= post.user.full_name %></b> <br />
+		          <p><%= post.description %><br /></p>
+		         
+		         <p>Members:<br/>
+		           	
 						 <%	user_array = Array.new %>
 						 	<% @assignment_record.each do |ar| %>
 						 		<% if ar.post_id == post.id%>
@@ -41,13 +55,12 @@
 						 	<% @user_record.each do |ur| %>
 			    				<% user_array.each do |ua| %>
 			    					<% if ur.id == ua %>
-			    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %><%=  ur.full_name%><br />
+			    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %> <%=  ur.full_name%><br /><br />
 			    				<%	end %>
 			    				<% end %>
 			    			<% end %>
 	    			</p>
-		           <%= image_tag post.user.pic.url(:thumb) %><b> <%= post.user.full_name %></b> <br />
-		          <p><%= post.description %><br /></p>
+		         
 		         
 			       <div class="meta">
 								
