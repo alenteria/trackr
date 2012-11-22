@@ -29,7 +29,9 @@ class PostsController < ApplicationController
     @all_users = User.all
     @statuses = Status.all
     @categories = Category.all
-    #@assignment = Assignment.new
+    
+    @assignments = @post.assignments.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -52,23 +54,21 @@ class PostsController < ApplicationController
       nkey="TCK:#{key}"
       params[:post][:namekey] = nkey
     
-    assigned_usrs=params[:post][:user_id]
     params[:post][:user_id] = current_user.id
     params[:post][:status_id] = 1
     
     
     @post = Post.new(params[:post])
     
+    params[:users][:id].each do |user|
+      if !user.empty?
+        @post.assignments.new(:user_id => user)
+      end
+    end
+    
     respond_to do |format|
       
       if @post.save
-        post_id= @post.id
-        
-        for n in 1...assigned_usrs.size do
-           assigned = Assignment.new(:post_id => post_id, :user_id => assigned_usrs[n])
-           assigned.save
-         end
-         
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
