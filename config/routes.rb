@@ -1,16 +1,22 @@
 Devise::Application.routes.draw do
+
+
   resources :statuses
 
-
   resources :categories
-
-
-  resources :posts
-
 
   get "home/index"
 
   devise_for :users
+  
+ resources :comments
+
+
+  resources :posts do
+    resources :comments
+  end
+  match ':controller/:action/:id'
+  match ':controller/:action/:id.:format'
   
 #  devise_scope :user do
 #    get 'register', to: 'devise/registrations#new', as: :register #####################
