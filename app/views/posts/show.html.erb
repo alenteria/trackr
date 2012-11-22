@@ -17,17 +17,17 @@
 
 <p>
   <b>User:</b>
-  <%= @post.user_id %>
+  <%= @post.user.fname %>&nbsp;<%= @post.user.lname%>
 </p>
 
 <p>
   <b>Category:</b>
-  <%= @post.category_id %>
+  <%= @post.category.title %>
 </p>
 
 <p>
   <b>Status:</b>
-  <%= @post.status_id %>
+  <%= @post.status.title %>
 </p>
 
 

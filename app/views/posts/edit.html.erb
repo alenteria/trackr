@@ -37,6 +37,20 @@
     <%= f.select :category_id, @cat %>
   </div>
   
+    <div class="field">
+  	<%= f.label "Assigned Users"%>
+  	
+  	<% @usr=Array.new 
+	  	@all_users.each do |usr|
+	  	@usr<<[usr.fname,usr.id]
+  	 end 
+  	 %>
+  	 
+  	<%= f.select(:user_id, @usr, 
+	{ :selected => @usr },{ :multiple => true}) %>
+
+  </div>
+  
   <% @stat=Array.new 
   	@statuses.each do |stat|
   	@stat<<[stat.title,stat.id]
