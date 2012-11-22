@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @all_users = User.all
     @statuses = Status.all
     @categories = Category.all
-    @assignment = Assignment.new
+    #@assignment = Assignment.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -46,13 +46,28 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+      #random number generator
+      key=SecureRandom.hex(5)
+      nkey="TCK:#{key}"
+      params[:post][:namekey] = nkey
+    
+    assigned_usrs=params[:post][:user_id]
     params[:post][:user_id] = current_user.id
     params[:post][:status_id] = 1
+    
+    
     @post = Post.new(params[:post])
     
-    
     respond_to do |format|
+      
       if @post.save
+        post_id= @post.id
+        puts assigned_usrs.size
+        for n in 1...assigned_usrs.size do
+           assigned = Assignment.new(:post_id => post_id, :user_id => assigned_usrs[n])
+           assigned.save
+         end
+         
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

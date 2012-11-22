@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :namekey %><br />
-    <%= f.text_field :namekey %>
-  </div>
-  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
@@ -35,7 +31,20 @@
     <%= f.select :category_id, @cat %>
   </div>
   
-   
+   <div class="field">
+  	<%= f.label "Assigned Users"%>
+  	
+  	<% @usr=Array.new 
+	  	@all_users.each do |usr|
+	  	@usr<<[usr.fname,usr.id]
+  	 end 
+  	 %>
+  	 
+  	<%= f.select(:user_id, @usr, 
+{ :selected => @usr },{ :multiple => true}) %>
+
+  </div>
+  
  
   <div class="actions">
     <%= f.submit %>

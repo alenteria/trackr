@@ -18,7 +18,7 @@
     <td><%= post.namekey %></td>
     <td><%= post.title %></td>
     <td><%= post.description %></td>
-    <td><%= post.user_id %></td>
+    <td><%= post.user.fname %>&nbsp;<%= post.user.lname%></td>
     <td><%= post.category.title %></td>
     <td><%= post.status.title %></td>
     <td><%= link_to 'Show', post %></td>
