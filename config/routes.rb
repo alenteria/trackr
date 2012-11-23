@@ -6,6 +6,8 @@ Devise::Application.routes.draw do
   resources :categories
 
   get "home/index"
+  
+  get "/posts/:attr/:id" => "posts#sort_by"
 
   devise_for :users
   
