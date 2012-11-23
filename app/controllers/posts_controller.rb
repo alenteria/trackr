@@ -75,6 +75,12 @@ class PostsController < ApplicationController
     respond_to do |format|
       
       if @post.save
+        params[:users][:id].each do |ass_id|
+          if !ass_id.empty?
+            user = User.find(ass_id)
+            Notifier.new_ticket_notification(user).deliver
+          end
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
