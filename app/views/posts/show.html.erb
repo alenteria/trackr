@@ -2,7 +2,7 @@
 
 <p>
   <h3>Title:</3>
-  <%=h @post.title %>
+  <%=h @post.title.upcase %>
 </p>
 <p class="lead">
  "<i><%=h @post.description %></i>" <br /><br />	    			
@@ -43,16 +43,13 @@
     <%= f.text_area :message, :rows=> "3" %><br />
 
      <%= f.submit "Add Comment" %>
+     
  </div>
 <% end %>
+<div class="status">
+<p>
 
-<br />
-<p class="lead">
-
-Author:  <%= image_tag @post.user.pic.url(:thumb) %> <%= @post.user.full_name %> <br />
-</p>
-<p class="lead">
-Members:
+				Members: 
 				 <%	user_array = Array.new %>
 				 	<% @assignment_record.each do |ar| %>
 				 		<% if ar.post_id == @post.id%>
@@ -63,8 +60,9 @@ Members:
 				 	<% @user_record.each do |ur| %>
 	    				<% user_array.each do |ua| %>
 	    					<% if ur.id == ua %>
-	    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %><%=  ur.full_name%>&nbsp;
+	    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %> <%=  ur.full_name%>&nbsp;|
 	    				<%	end %>
 	    				<% end %>
 	    			<% end %>
 </p>
+</div>

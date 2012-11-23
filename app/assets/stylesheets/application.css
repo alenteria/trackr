@@ -100,4 +100,11 @@ body {
 	color: #ffff;
 	
 }
+.test{
+	border: 1px solid #000000;
+	height: 50px;
+	width: 50px;
+	float:right;
+	
+}
 

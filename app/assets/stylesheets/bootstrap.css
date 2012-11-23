@@ -1013,11 +1013,12 @@ textarea,
 textarea,
 .uneditable-input {
   width: 880px;
+  height: 200px;
 }
 
 
 textarea {
-  height: auto;
+  height: 150px;
 }
 
 textarea,
@@ -5856,7 +5857,7 @@ a.badge:hover {
   font-weight: 200;
   line-height: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #d6d6d6;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;

@@ -16,9 +16,9 @@
 $(function(){
   $(".ticket-text").each(function(i){
     len=$(this).text().length;
-    if(len>90)
+    if(len>80)
     {
-      $(this).text($(this).text().substr(0,90)+'...');
+      $(this).text($(this).text().substr(0,80)+'...');
     }
   });       
 });
