@@ -13,3 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function(){
+  $(".ticket-text").each(function(i){
+    len=$(this).text().length;
+    if(len>90)
+    {
+      $(this).text($(this).text().substr(0,90)+'...');
+    }
+  });       
+});
+
+$(function(){
+  $(".ticket-title").each(function(i){
+    len=$(this).text().length;
+    if(len>17)
+    {
+      $(this).text($(this).text().substr(0,17)+'...');
+    }
+  });       
+});

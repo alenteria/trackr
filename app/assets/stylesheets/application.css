@@ -83,7 +83,7 @@ body {
   padding: 10px;
   margin-bottom: 20px;
   border: 10px solid #a7a7a7;
-  overflow: auto;
+  overflow: hidden;
   background-color: #88c8fe;
 
 }
@@ -93,7 +93,7 @@ body {
   padding: 10px;
   margin-bottom: 20px;
   border: 10px solid #a7a7a7;
-  overflow: auto;
+  overflow: hidden;
   background-color: #ffae73;
 }
 .btn btn-primary btn-large{

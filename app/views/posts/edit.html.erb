@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :namekey %><br />
-    <%= f.text_field :namekey %>
+    <% f.label :namekey %><br />
+    <% f.text_field :namekey %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -37,6 +37,17 @@
     <%= f.select :category_id, @cat %>
   </div>
   
+   <% @stat=Array.new 
+  	@statuses.each do |stat|
+  	@stat<<[stat.title,stat.id]
+  	 end 
+  	 %>	
+
+  <div class="field">
+    <%= f.label :status_id %><br />
+    <%= f.select :status_id, @stat %>
+  </div>
+  
   <div class="field">
   	
    	
@@ -47,16 +58,8 @@
 
   </div>
   
-  <% @stat=Array.new 
-  	@statuses.each do |stat|
-  	@stat<<[stat.title,stat.id]
-  	 end 
-  	 %>	
-
-  <div class="field">
-    <%= f.label :status_id %><br />
-    <%= f.select :status_id, @stat %>
-  </div>
+ 
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -3,7 +3,7 @@
  	
 	<div class="hero-unit">
 	        <h1>Dashboard</h1>
-	        <p>Some text here.</p>
+	        <p>Where you can see all the tickets.</p>
 	        <% if user_signed_in? %>
 					<%= link_to "Create ticket", new_post_path, class:"btn btn-primary btn-large" %>
 				<% else %>
@@ -11,6 +11,7 @@
 					<h1>Register now to create a ticket!</h1>
 				</div>
 			<% end %>
+			
 			
 	</div> 
 
@@ -26,41 +27,52 @@
 		       <% end %>	
 		        	
 		        	
-		         <p class="lead"><%= post.title %></p>
-		          <%= time_ago_in_words(post.created_at) + " ago" %>
+		         <p class="lead"><span class="ticket-title"><%= post.title %></span></p>
+		          <%= time_ago_in_words(post.created_at) + " ago" %><br />
 		      
 		        <% if post.category.title == "FEATURES" %>
-		        	<%= link_to "Open for Details »", post_path(post), class:"btn btn-info" %><br />
+		        	<%= link_to "OPEN»", post_path(post), class:"btn btn-info" %>
 		       <% else %>
-		       	 	<%= link_to "Open for Details »", post_path(post), class:"btn btn-warning" %><br />
+		       	 	<%= link_to "OPEN »", post_path(post), class:"btn btn-warning" %>
 		        <% end %>
+		        
+		        
+		        <a href=<%= "#myModal"+post.title %> role="button" class="btn" data-toggle="modal">DETAILS »</a>	
 		        	
-		        	
-		           <p><% post.namekey %></p>
-		          <p> Status: <%= post.status.title %></p>
-		           <p> Category: <%= post.category.title %></p>
+		           <p><% "myModal"+post.namekey %></p>
+		         
 		           
 		           <%= image_tag post.user.pic.url(:thumb) %><b> By: <%= post.user.full_name %></b> <br />
-		          <p><%= post.description %><br /></p>
+		          <p class="ticket-text"><%= post.description %><br /></p>
 		         
-		         <p>Members:<br/>
-		           	
-						 <%	user_array = Array.new %>
-						 	<% @assignment_record.each do |ar| %>
-						 		<% if ar.post_id == post.id%>
-						 			<% user_array<<ar.user_id %>
-						 		<% end %>	
-						 	<% end %>
-		 				 
-						 	<% @user_record.each do |ur| %>
-			    				<% user_array.each do |ua| %>
-			    					<% if ur.id == ua %>
-			    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %> <%=  ur.full_name%><br /><br />
-			    				<%	end %>
-			    				<% end %>
-			    			<% end %>
-	    			</p>
-		         
+		         <div id=<%= "myModal"+post.title %> class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						    <h3 id="myModalLabel">Details: </h3>
+						</div>
+						  <div class="modal-body">
+						    	<p> <b>Status: </b><%= post.status.title %></p>
+		           				<p><b>Category: </b><%= post.category.title %></p>
+						    	<p><b>Members: </b></p>
+								 <%	user_array = Array.new %>
+								 	<% @assignment_record.each do |ar| %>
+								 		<% if ar.post_id == post.id%>
+								 			<% user_array<<ar.user_id %>
+								 		<% end %>	
+								 	<% end %>
+				 				 
+								 	<% @user_record.each do |ur| %>
+					    				<% user_array.each do |ua| %>
+					    					<% if ur.id == ua %>
+					    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %> <%=  ur.full_name%>
+					    				<%	end %>
+					    				<% end %>
+					    			<% end %>
+						  </div>
+						  <div class="modal-footer">
+						</div>
+					</div>	
+		        
 		         
 			       <div class="meta">
 								
@@ -74,16 +86,15 @@
        			 </div>
        		<% end %>	 
 		</div>
-	
-		   		
-		   		
-	
-	
-
-
-
-
 
 <br />
 
 </div>
+
+
+
+ 
+
+
+
+	  
