@@ -6,12 +6,15 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.email_message.subject
   #
-  def new_ticket_notification(user)
+  def new_ticket_notification(user, current_user, post, assignees)
    # @greeting = "Hi"
 
    # mail to: "to@example.org"
-   
-   mail(:to => user.email, :subject => "New Ticket")
+   @assignee = user
+   @curr_user = current_user
+   @post  = post
+   @assignees = assignees
+   mail(:to => user.email, :subject => "New Ticket", :from => current_user.email)
    
   end
 end

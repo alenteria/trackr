@@ -2,6 +2,14 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :assignments
   has_many :posts, :through => :assignments
+  
+  
+  before_create :cap_name
+  
+  def cap_name
+    self.fname = self.fname.capitalize
+    self.lname = self.lname.capitalize
+  end
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

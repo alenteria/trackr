@@ -1,0 +1,16 @@
+<%= @assignee.full_name%>,
+
+You have a new ticket:
+
+Issued By: <%= @curr_user.full_name %>
+Title: <%= @post.title%>
+Namekey: <%= @post.namekey%>
+Description:
+
+<%= @post.description%>
+
+Assigned Users:
+
+<% @assignees.each do |ass|%>
+	<%= "#{ass.full_name} \n" %>
+<% end %>
