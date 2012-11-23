@@ -30,18 +30,7 @@
     <%= f.label :category_id %><br />
     <%= f.select :category_id, @cat %>
   </div>
-  
-   <% @stat=Array.new 
-  	@statuses.each do |stat|
-  	@stat<<[stat.title,stat.id]
-  	 end 
-  	 %>	
 
-  <div class="field">
-    <%= f.label :status_id %><br />
-    <%= f.select :status_id, @stat %>
-  </div>
-  
    <div class="field">
    	
    	<%= fields_for(@assignments) do |ass|%>

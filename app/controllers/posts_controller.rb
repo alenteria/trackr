@@ -63,8 +63,8 @@ class PostsController < ApplicationController
     params[:post][:user_id] = current_user.id
     params[:post][:status_id] = 1
     
-    @post = Post.new(params[:post])
     
+    @post = Post.new(params[:post])
     
     params[:users][:id].each do |user|
       if !user.empty?

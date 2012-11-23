@@ -60,9 +60,10 @@
 				 	<% @user_record.each do |ur| %>
 	    				<% user_array.each do |ua| %>
 	    					<% if ur.id == ua %>
-	    						<%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %> <%=  ur.full_name%>&nbsp;|
+	    						<div class="modal-user-con"><%= image_tag("/system/pics/#{ur.id}/thumb/#{ur.pic_file_name}", :alt => "") %> <%=  ur.full_name%></div>
 	    				<%	end %>
 	    				<% end %>
 	    			<% end %>
 </p>
 </div>
+

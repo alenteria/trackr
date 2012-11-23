@@ -107,4 +107,7 @@ body {
 	float:right;
 	
 }
-
+.modal-user-con{
+	float: left;	
+	margin:5px;
+}
