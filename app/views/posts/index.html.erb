@@ -1,6 +1,25 @@
 
  <div class="container">
  	
+ 	<div class="Sorter">
+ 		Filter Tickets By:<br />
+ 		<table>
+ 			<tr>
+ 				
+ 				<td>Category:</td>
+ 				<% @categories.each do |cat|%>
+ 					<td><%= link_to "#{cat.title}", "#{root_path}posts/category/#{cat.id}"%></td>
+ 				<% end %>
+ 			</tr>
+ 			<tr>
+ 				<td>Status:</td>
+ 				<% @statuses.each do |stat|%>
+ 					<td><%= link_to "#{stat.title}", "#{root_path}posts/status/#{stat.id}"%></td>
+ 				<% end %>
+ 				
+ 			</tr>
+ 		</table>
+ 	</div>
  	
  	
 	<div class="hero-unit">
