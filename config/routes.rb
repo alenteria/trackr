@@ -4,9 +4,8 @@ Devise::Application.routes.draw do
   resources :statuses
 
   resources :categories
-
-  get "home/index"
   
+  get "home/index"
   get "/f/:attr/:id" => "posts#filter_by"
 
   devise_for :users
