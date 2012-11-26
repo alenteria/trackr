@@ -1,39 +1,57 @@
 
  <div class="container">
+ 
  	
- 	<div class="Sorter">
- 		Filter Tickets By:<br />
- 		<table>
- 			<tr>
- 				
- 				<td>Category:</td>
- 				<% @categories.each do |cat|%>
- 					<td><%= link_to "#{cat.title}", "#{root_path}f/category/#{cat.id}"%></td>
- 				<% end %>
- 			</tr>
- 			<tr>
- 				<td>Status:</td>
- 				<% @statuses.each do |stat|%>
- 					<td><%= link_to "#{stat.title}", "#{root_path}f/status/#{stat.id}"%></td>
- 				<% end %>
- 				
- 			</tr>
- 		</table>
- 	</div>
- 	
- 	
-	<div class="hero-unit">
+	<div class="hero-unit-1">
 	        <h1>Dashboard</h1>
 	        <p>Where you can see all the tickets.</p>
+	       
 	        <% if user_signed_in? %>
-					<%= link_to "Create ticket", new_post_path, class:"btn btn-inverse btn-large" %>
-				<% else %>
+	        	<%= link_to "Create ticket", new_post_path, class:"btn btn-inverse btn-large" %><br /><br />
+	        	
+				  <div class="btn-group">
+				    
+				    <nav>
+				    <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+				      Sort
+				      <span class="caret"></span>
+				    </button>
+				    	<ul class="dropdown-menu">
+					      	
+			 				
+			 					<li><a href="#"><b>Category</b></a>
+									<ul>
+										<% @categories.each do |cat|%>
+						 					<li><%= link_to "#{cat.title}", "#{root_path}f/category/#{cat.id}"%></li>
+						 				<% end %>
+									</ul>
+								</li>
+								<li><a href="#"><b>Status</b></a>
+									<ul>
+										<% @statuses.each do |stat|%>
+						 					<li><%= link_to "#{stat.title}", "#{root_path}f/status/#{stat.id}"%></li>
+						 				<% end %>
+									</ul>
+								</li>
+					    </ul>
+				   </nav>
+				    
+				  </div>
+		
+				 
+				    	
+				
+			  
+			<% else %>
 				<div class="page-header">
 					<h1>Register now to create a ticket!</h1>
 				</div>
 			<% end %>
+			
+				  
+			
 	</div> 
-
+	 	
 
 
 	<div class="row">

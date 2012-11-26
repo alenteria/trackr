@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     
-    @posts = Post.all
+   @posts = Post.find(:all, :order => "status_id")
     @user_record = User.all
     @assignment_record = Assignment.all
     @statuses = Status.all
@@ -153,7 +153,7 @@ class PostsController < ApplicationController
   
   def filter_by
     
-    @posts = Post.where("#{params[:attr]}_id = ?", params[:id])
+    @posts = Post.where("#{params[:attr]}_id = ?", params[:id]).order("status_id")
     
     @user_record = User.all
     @assignment_record = Assignment.all

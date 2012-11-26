@@ -78,7 +78,7 @@ body {
         padding: 7px 9px;
       }
 .span4-a {
-  width: 250px;
+  width: 260px;
   height: 230px;
   padding: 10px;
   margin-bottom: 20px;
@@ -88,7 +88,7 @@ body {
 
 }
 .span4-b {
-  width: 250px;
+  width: 260px;
   height: 230px;
   padding: 10px;
   margin-bottom: 20px;
@@ -111,3 +111,4 @@ body {
 	float: left;	
 	margin:5px;
 }
+
