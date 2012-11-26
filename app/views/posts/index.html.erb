@@ -8,13 +8,13 @@
  				
  				<td>Category:</td>
  				<% @categories.each do |cat|%>
- 					<td><%= link_to "#{cat.title}", "#{root_path}posts/category/#{cat.id}"%></td>
+ 					<td><%= link_to "#{cat.title}", "#{root_path}f/category/#{cat.id}"%></td>
  				<% end %>
  			</tr>
  			<tr>
  				<td>Status:</td>
  				<% @statuses.each do |stat|%>
- 					<td><%= link_to "#{stat.title}", "#{root_path}posts/status/#{stat.id}"%></td>
+ 					<td><%= link_to "#{stat.title}", "#{root_path}f/status/#{stat.id}"%></td>
  				<% end %>
  				
  			</tr>

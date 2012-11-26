@@ -7,7 +7,7 @@ Devise::Application.routes.draw do
 
   get "home/index"
   
-  get "/posts/:attr/:id" => "posts#filter_by"
+  get "/f/:attr/:id" => "posts#filter_by"
 
   devise_for :users
   
