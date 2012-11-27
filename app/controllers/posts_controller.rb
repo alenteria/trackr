@@ -4,6 +4,22 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
   # GET /posts
   # GET /posts.json
+  
+  before_filter :load_post, :only => [:edit, :update, :delete]
+   
+
+  def load_post
+     #@post = current_user.posts.find_by_id(params[:id])
+      @post = current_user.posts.find_by_id(params[:id])
+      @post ||= not_found      
+  end
+  
+  def test
+    
+    render :template => 'posts/show' 
+    
+  end
+  
   def index
     
    @posts = Post.find(:all, :order => "status_id")
@@ -60,6 +76,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    
       #random number generator
       key=SecureRandom.hex(5).upcase
       nkey="TCK:#{key}"
@@ -154,6 +171,25 @@ class PostsController < ApplicationController
   def filter_by
     
     @posts = Post.where("#{params[:attr]}_id = ?", params[:id]).order("status_id")
+    
+    @user_record = User.all
+    @assignment_record = Assignment.all
+    @statuses = Status.all
+    @categories = Category.all
+    
+    respond_to do |format|
+      format.html { render :template => "posts/index"}
+      format.json { render json: @posts }
+    end
+  end
+  def mytickets
+    ass = Assignment.where("user_id = ?", current_user.id)
+    @posts = []
+    index = 0
+    ass.each do |a|
+      @posts[index] = Post.find(a.post_id)
+      index = index + 1
+    end
     
     @user_record = User.all
     @assignment_record = Assignment.all

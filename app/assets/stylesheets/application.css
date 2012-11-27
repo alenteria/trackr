@@ -77,22 +77,28 @@ body {
         margin-bottom: 15px;
         padding: 7px 9px;
       }
-.span4-a {
-  width: 260px;
+.postcont4-a {
+  width: 250px;
   height: 230px;
   padding: 10px;
-  margin-bottom: 20px;
-  border: 10px solid #a7a7a7;
+ 
+  
   overflow: hidden;
   background-color: #88c8fe;
 
 }
-.span4-b {
-  width: 260px;
+.span4-cont{
+	border: 1px solid #4C3C1B;
+	padding: 10px;
+    
+    background-color: #EFEECB;
+    margin-bottom: 20px;
+}
+.postcont4-b {
+  width: 250px;
   height: 230px;
   padding: 10px;
-  margin-bottom: 20px;
-  border: 10px solid #a7a7a7;
+
   overflow: hidden;
   background-color: #ffae73;
 }
@@ -111,4 +117,8 @@ body {
 	float: left;	
 	margin:5px;
 }
-
+.span-cont{
+float: left;
+min-height: 1px;
+	
+}

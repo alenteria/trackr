@@ -40,9 +40,9 @@
 <%= form_for [@post, Comment.new] do |f| %>
 <div class="status">
 	<%= f.hidden_field :user_id, :value=>current_user.id%>
-    <%= f.text_area :message, :rows=> "3" %><br />
+    <%= f.text_area :message, :rows=> "3", :placeholder => "Your message here..."%><br />
 
-     <%= f.submit "Add Comment" %>
+     <%= f.submit "Add Comment", :class => "btn btn-inverse" %>
      
  </div>
 <% end %>
