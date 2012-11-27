@@ -5,14 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   
-  before_filter :load_post, :only => [:edit, :update, :delete]
    
-
-  def load_post
-     #@post = current_user.posts.find_by_id(params[:id])
-      @post = current_user.posts.find_by_id(params[:id])
-      @post ||= not_found      
-  end
   
   def index
     
@@ -63,8 +56,24 @@ class PostsController < ApplicationController
     @all_users = User.all
     @statuses = Status.all
     @categories = Category.all
-    
     @assignments = @post.assignments.build
+    @view = nil
+    #check if user is one of assigned users
+    
+    assigned = false
+    @post.assignments.each do |a|
+      if current_user.id == a.user_id
+        assigned = true
+        break
+      end
+    end
+    if @post.user == current_user
+      render :template => "posts/full_edit"
+    elsif assigned
+       render :template => "posts/assigned_view"
+    else
+      render :text => "Restricted action!"
+    end
   end
 
   # POST /posts
@@ -103,9 +112,6 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    
-    params[:post][:user_id] = current_user.id
-    
     @post = Post.find(params[:id])
     
     respond_to do |format|

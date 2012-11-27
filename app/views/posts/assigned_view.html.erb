@@ -1,0 +1,47 @@
+<h1>Editing post</h1>
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+   <% @stat=Array.new 
+  	@statuses.each do |stat|
+  	@stat<<[stat.title,stat.id]
+  	 end 
+  	 %>	
+
+  <div class="field">
+    <%= f.label :status_id %><br />
+    <%= f.select :status_id, @stat %>
+  </div>
+  
+  <div class="field">
+  	
+   	
+   	<%= fields_for(@assignments) do |ass|%>
+		<%= ass.label "Assigned Users"%>
+		<%= collection_select( :users, :id, @all_users, :id, :full_name, {}, {:multiple => :true})%>
+	<% end %>
+
+  </div>
+  
+ 
+  
+  <div class="actions">
+    <%= f.submit "Submit",:class => "btn btn-inverse" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>
