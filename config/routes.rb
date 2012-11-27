@@ -7,7 +7,8 @@ Devise::Application.routes.draw do
   
   get "home/index"
   get "/f/:attr/:id" => "posts#filter_by"
-
+  get "posts/mytickets" => "posts#mytickets"
+  
   devise_for :users
   
  resources :comments
@@ -18,7 +19,7 @@ Devise::Application.routes.draw do
   end
   match ':controller/:action/:id'
   match ':controller/:action/:id.:format'
-  
+ # match ':class/:attachment/missing_:style.png'
 #  devise_scope :user do
 #    get 'register', to: 'devise/registrations#new', as: :register #####################
  #   get 'login', to: 'devise/sessions#new', as: :login

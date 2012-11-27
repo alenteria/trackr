@@ -17,8 +17,8 @@
 				      <span class="caret"></span>
 				    </button>
 				    	<ul class="dropdown-menu">
-					      	
-			 				
+					      		<li><a href="/posts">All</a></li>
+			 					<li><%= link_to 'My Tickets', "#{root_path}posts/mytickets" %></li>
 			 					<li><a href="#"><b>Category</b></a>
 									<ul>
 										<% @categories.each do |cat|%>

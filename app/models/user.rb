@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  #has_attached_file :pic, :default_url => "/:class/:attachment/missing_:style.png"
   has_attached_file :pic, :styles => 
            { :medium => "100x100>", :thumb => "50x50>" }
    #has_attached_file :attach

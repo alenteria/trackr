@@ -14,12 +14,6 @@ class PostsController < ApplicationController
       @post ||= not_found      
   end
   
-  def test
-    
-    render :template => 'posts/show' 
-    
-  end
-  
   def index
     
    @posts = Post.find(:all, :order => "status_id")
@@ -171,6 +165,25 @@ class PostsController < ApplicationController
   def filter_by
     
     @posts = Post.where("#{params[:attr]}_id = ?", params[:id]).order("status_id")
+    
+    @user_record = User.all
+    @assignment_record = Assignment.all
+    @statuses = Status.all
+    @categories = Category.all
+    
+    respond_to do |format|
+      format.html { render :template => "posts/index"}
+      format.json { render json: @posts }
+    end
+  end
+  def mytickets
+    ass = Assignment.where("user_id = ?", current_user.id)
+    @posts = []
+    index = 0
+    ass.each do |a|
+      @posts[index] = Post.find(a.post_id)
+      index = index + 1
+    end
     
     @user_record = User.all
     @assignment_record = Assignment.all

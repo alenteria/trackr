@@ -5877,6 +5877,20 @@ a.badge:hover {
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
+.hero-unit-2 {
+  padding: 60px;
+ 
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+  background-image: url('/layout/hero3.jpg');
+  background-repeat: no-repeat;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
 
 .hero-unit h1 {
   margin-bottom: 0;
@@ -5885,7 +5899,6 @@ a.badge:hover {
   letter-spacing: -1px;
   color: inherit;
 }
-
 .hero-unit-1 h1 {
   margin-bottom: 0;
   font-size: 60px;
@@ -5893,10 +5906,21 @@ a.badge:hover {
   letter-spacing: -1px;
   color: inherit;
 }
+.hero-unit-2 h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: inherit;
+}
+
 .hero-unit li {
   line-height: 30px;
 }
 .hero-unit-1 li {
+  line-height: 30px;
+}
+.hero-unit-2 li {
   line-height: 30px;
 }
 .pull-right {

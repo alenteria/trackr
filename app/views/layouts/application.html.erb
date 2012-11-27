@@ -17,15 +17,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Trackr</a>
+          <a class="brand" href="/">Trackr</a>
           <div class="nav-collapse collapse">
           	
           	<% if user_signed_in? %>
             <ul class="nav">
-	            <li><%= link_to "Home", root_path %></li>
-	            <li><%= link_to "Dashboard", posts_path %></li>
-	            <li><%= link_to "Category", categories_path %></li>
-	            <li><%= link_to "Status", statuses_path, class:"active" %></li>
+	            <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+	            <li class="<%= 'active' if current_page?(posts_path) %>"><%= link_to "Dashboard", posts_path %></li>
+	            <li class="<%= 'active' if current_page?(categories_path) %>"><%= link_to "Category", categories_path %></li>
+	            <li class="<%= 'active' if current_page?(statuses_path) %>"><%= link_to "Status", statuses_path, class:"active" %></li>
             </ul>
 		    <% end %>  
 		       

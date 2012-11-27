@@ -1,31 +1,32 @@
  <div class="container">
-
+ 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div class="hero-unit-2">
         <h1>Welcome to Trackr!</h1>
         <p>A simple bug and feature management system. </p>
-        <p><a class="btn btn-primary btn-large">Start now &raquo;</a></p>
+        <p><%= link_to "Dashboard »", posts_path, class: "btn btn-inverse btn-large" %></p>
       </div>
-
+ 
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Bugs</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">Create new &raquo;</a></p>
+        	 
+          <a class="btn" href="/posts/mytickets"> <h2>My Tickets&raquo;</h2> </a><br />
+          <br /><p>It includes tickets I created and tickets which are assigned to me.</p>
+         
         </div>
         <div class="span4">
-          <h2>Features</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">Create new &raquo;</a></p>
+        <a class="btn" href="/f/category/1"> <h2>Features&raquo;</h2> </a><br />
+         <br /> <p>All tickets belongs to Feature Category are displayed here.</p>
+         
        </div>
         <div class="span4">
-          <h2>Assignments</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">Create new &raquo;</a></p>
+           <a class="btn" href="/f/category/2"> <h2>Bugs&raquo;</h2></a><br />
+          <br /><p>All tickets belongs to Bug Category are displayed here.</p>
+          
         </div>
       </div>
-      
+       
 
       <hr>
 
