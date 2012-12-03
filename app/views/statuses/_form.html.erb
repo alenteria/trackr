@@ -10,10 +10,24 @@
       </ul>
     </div>
   <% end %>
-
+   <%
+      s_li = Array.new
+      if @status_list.empty?
+      s_li = [["Open", "Open"], ["Closed", "Closed"]]
+      else
+      @status_list.each do |s|
+       if s.id == 1 
+        s_li = [["Closed", "Closed"]]
+       elsif s.id == 2
+        [["Open", "Open"]]
+       end
+      end
+    end
+   %>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+     <%= f.select :title, s_li %>
+     <%= f.hidden_field :id, value:"1" %>
   </div>
   <div class="actions">
     <%= f.submit %>

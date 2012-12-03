@@ -8,8 +8,9 @@ class PostsController < ApplicationController
    
   
   def index
-    
-   @posts = Post.find(:all, :order => "status_id")
+    @status = Status.all
+    @categories = Category.all
+    @posts = Post.find(:all, :order => "status_id")
     @user_record = User.all
     @assignment_record = Assignment.all
     @statuses = Status.all
@@ -169,7 +170,8 @@ class PostsController < ApplicationController
   end
   
   def filter_by
-    
+     @status = Status.all
+    @categories = Category.all
     @posts = Post.where("#{params[:attr]}_id = ?", params[:id]).order("status_id")
     
     @user_record = User.all
@@ -183,6 +185,8 @@ class PostsController < ApplicationController
     end
   end
   def mytickets
+     @status = Status.all
+    @categories = Category.all
     ass = Assignment.where("user_id = ?", current_user.id)
     @posts = []
     index = 0
@@ -202,6 +206,8 @@ class PostsController < ApplicationController
     end
   end
   def mytickets
+     @status = Status.all
+    @categories = Category.all
     ass = Assignment.where("user_id = ?", current_user.id)
     @posts = []
     index = 0
@@ -220,4 +226,5 @@ class PostsController < ApplicationController
       format.json { render json: @posts }
     end
   end
+
 end

@@ -10,10 +10,23 @@
       </ul>
     </div>
   <% end %>
-
+  <%
+      s_li = Array.new
+      if @cat.empty?
+      s_li = [["Bug", "Bug"], ["Features", "Features"]]
+      else
+      @cat.each do |s|
+       if s.id == 1 
+        s_li = [["Features", "Features"]]
+       elsif s.id == 2
+        [["Bug", "Bug"]]
+       end
+      end
+    end
+   %>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.select :title, s_li %>
   </div>
   <div class="actions">
     <%= f.submit %>

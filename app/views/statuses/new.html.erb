@@ -1,5 +1,9 @@
+<% if @status_list.count == 2%>
+<h2>Statuses are already created!</h2>
+<% else %>
 <h1>New status</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', statuses_path %>
+<% end %>

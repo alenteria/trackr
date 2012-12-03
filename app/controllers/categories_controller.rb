@@ -26,6 +26,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
+    @cat = Category.all
     @category = Category.new
 
     respond_to do |format|
@@ -42,6 +43,11 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
+     if params[:category][:title] == 'Bug'
+      params[:category][:id] = '1' 
+    elsif params[:category][:title] == 'Features'
+      params[:category][:id] = '2'
+    end
     @category = Category.new(params[:category])
 
     respond_to do |format|

@@ -1,4 +1,8 @@
-
+ <% if @status.count != 2%>
+   <%= link_to "", new_status_path ,id:"AutoLink", rel:"facebox" %>
+  <%elsif @categories.count != 2%>
+   <%= link_to "", new_category_path ,id:"AutoLink", rel:"facebox" %>
+ <%else%>
  <div class="container">
  
  	
@@ -7,7 +11,7 @@
 	        <p>Where you can see all the tickets.</p>
 	       
 	        <% if user_signed_in? %>
-	        	<%= link_to "Create ticket", new_post_path, class:"btn btn-inverse btn-large" %><br /><br />
+	        	<%= link_to "Create ticket", new_post_path, class:"btn btn-inverse btn-large",rel:"facebox" %><br /><br />
 	        	
 				  <div class="btn-group">
 				    
@@ -128,6 +132,6 @@
 
  
 
-
+<%end%>
 
 	  

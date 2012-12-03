@@ -25,6 +25,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   # GET /statuses/new.json
   def new
+    @status_list = Status.all
     @status = Status.new
 
     respond_to do |format|
@@ -41,8 +42,14 @@ class StatusesController < ApplicationController
   # POST /statuses
   # POST /statuses.json
   def create
-    @status = Status.new(params[:status])
-
+    
+    if params[:status][:title] == 'Open'
+      params[:status][:id] = '1' 
+    elsif params[:status][:title] == 'Closed'
+      params[:status][:id] = '2'
+    end
+  @status = Status.new(params[:status])
+    
     respond_to do |format|
       if @status.save
         format.html { redirect_to @status, notice: 'Status was successfully created.' }

@@ -1,52 +1,70 @@
+#facebox .n {
+  background:url(/images/n.png) repeat-x bottom left;
+  border:none;
+  height:18px;
+}
+#facebox .s {
+  background:url(/images/s.png) repeat-x top left;
+  border:none;
+  height:18px;
+}
+#facebox .w {
+  background:url(/images/w.png) repeat-y top right;
+  border:none;
+  width:13px;
+}
+#facebox .e {
+  background:url(/images/e.png) repeat-y top left;
+  border:none;
+  width:13px;
+}
+
+#facebox .tl {
+  background:url(/images/nw.png) no-repeat bottom right;
+  border:none;
+}
+
+#facebox .tr {
+  background:url(/images/ne.png) no-repeat bottom left;
+  border:none;
+}
+
+#facebox .bl {
+  background:url(/images/sw.png) no-repeat top right;
+  border:none;
+}
+
+#facebox .br {
+  background:url(/images/se.png) no-repeat top left;
+  border:none;
+}
+
 #facebox {
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 100;
   text-align: left;
 }
 
-
-#facebox .popup{
-  position:relative;
-  border:3px solid rgba(0,0,0,0);
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
-  border-radius:5px;
-  -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
-  -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
-  box-shadow:0 0 18px rgba(0,0,0,0.4);
+#facebox .popup {
+  position: relative;
+  margin:auto;
 }
 
-#facebox .content {
-  display:table;
-  width: 370px;
-  padding: 10px;
+#facebox table {
+  margin: auto;
+  border-collapse: collapse;
+}
+#facebox td {
+  border:none;
+}
+
+#facebox .body {
+  padding: 5px;
   background: #fff;
-  -webkit-border-radius:4px;
-  -moz-border-radius:4px;
-  border-radius:4px;
-}
-
-#facebox .content > p:first-child{
-  margin-top:0;
-}
-#facebox .content > p:last-child{
-  margin-bottom:0;
-}
-
-#facebox .close{
-  position:absolute;
-  top:5px;
-  right:5px;
-  padding:2px;
-  background:#fff;
-}
-#facebox .close img{
-  opacity:0.3;
-}
-#facebox .close:hover img{
-  opacity:1.0;
+  width: 500px;
 }
 
 #facebox .loading {
@@ -59,22 +77,50 @@
 
 #facebox img {
   border: 0;
-  margin: 0;
 }
 
-#facebox_overlay {
+#facebox .footer {
+  padding: 5px;
+  margin-top: 3px;
+  text-align: center;
+}
+
+#facebox .info {
+  margin-top: 5px;
+  padding:0 5px;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif; 
+  color: #777;
+  line-height: 16px;
+  font-size: 11px;
+}
+
+#facebox .navigation {
+  float: left;
+}
+
+#facebox .close {
+  cursor: pointer;
+  float: right;
+  display:inline;
+}
+
+#facebox .next, #facebox .prev {
+  font-size: 170%;
+}
+
+#facebox .tl, #facebox .tr, #facebox .bl, #facebox .br {
+  overflow: hidden;
+  padding: 0;
+}
+#facebox .overlay {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  height:100%;
+  top:0;
+  left:0;
   width:100%;
-}
-
-.facebox_hide {
-  z-index:-100;
-}
-
-.facebox_overlayBG {
-  background-color: #000;
-  z-index: 99;
+  height:100%;
+  background-color:#666;
+  z-index:0;
+  float:left;
+  opacity:0.80;
+  filter:alpha(opacity=80);
 }
