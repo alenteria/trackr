@@ -44,9 +44,9 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
      if params[:category][:title] == 'Bug'
-      params[:category][:id] = '1' 
+      params[:category][:id] = '2' 
     elsif params[:category][:title] == 'Features'
-      params[:category][:id] = '2'
+      params[:category][:id] = '1'
     end
     @category = Category.new(params[:category])
 
